@@ -1,0 +1,34 @@
+﻿<Window x:Class="PricerGUI.ProcessVisualizer"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PricerGUI"
+        mc:Ignorable="d"
+        xmlns:oxy="http://oxyplot.org/wpf"
+        Title="ProcessVisualizer" Height="338" Width="592" Initialized="Window_Initialized">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="40px"/>
+        </Grid.RowDefinitions>
+
+        <oxy:Plot x:Name="calProcPlot" Title="Calibrated Process" LegendPlacement="Inside" Grid.Row="0">
+            <oxy:Plot.Axes>
+                <oxy:LinearAxis Position="Bottom" Minimum="0" Maximum="30"  Unit="Years"/>
+                <oxy:LinearAxis Position="Left" Minimum="0" MaximumPadding="0.1" />
+            </oxy:Plot.Axes>
+            <oxy:Plot.Series>
+                <oxy:LineSeries Title="Forward rate"  Color="Blue" ItemsSource="{Binding fwrates}"/>
+                <oxy:LineSeries Title="Process instances"  Color="Orange" ItemsSource="{Binding pi1}"/>
+                <oxy:LineSeries Color="Orange" ItemsSource="{Binding pi2}"/>
+                <oxy:LineSeries Color="Orange" ItemsSource="{Binding pi3}"/>
+            </oxy:Plot.Series>
+        </oxy:Plot>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" FlowDirection="RightToLeft">
+            <Button x:Name="regenButton" Content="Regenerate Paths" Margin="4" Click="regenButton_Click"/>
+        </StackPanel>
+
+    </Grid>
+</Window>

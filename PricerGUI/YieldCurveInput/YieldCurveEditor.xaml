@@ -1,0 +1,37 @@
+﻿<UserControl x:Class="PricerGUI.YieldCurveInput.YieldCurveEditor"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PricerGUI.YieldCurveInput"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <local:YieldCurvePointSlider x:Name="slider1m" IntervalString="1MO" HorizontalAlignment="Center" PropertyChanged="sliders_PropertyChanged"/>
+        <local:YieldCurvePointSlider x:Name="slider3m" IntervalString="3MO" Grid.Column="1" HorizontalAlignment="Center" PropertyChanged="sliders_PropertyChanged"/>
+        <local:YieldCurvePointSlider x:Name="slider6m" IntervalString="6MO" Grid.Column="2" HorizontalAlignment="Center" PropertyChanged="sliders_PropertyChanged"/>
+        <local:YieldCurvePointSlider x:Name="slider1y" IntervalString="1Y" Grid.Column="3" HorizontalAlignment="Center" PropertyChanged="sliders_PropertyChanged"/>
+        <local:YieldCurvePointSlider x:Name="slider2y" IntervalString="2Y" Grid.Column="4" HorizontalAlignment="Center" PropertyChanged="sliders_PropertyChanged"/>
+        <local:YieldCurvePointSlider x:Name="slider3y" IntervalString="3Y" Grid.Column="5" HorizontalAlignment="Center" PropertyChanged="sliders_PropertyChanged"/>
+        <local:YieldCurvePointSlider x:Name="slider5y" IntervalString="5Y" Grid.Column="6" HorizontalAlignment="Center" PropertyChanged="sliders_PropertyChanged"/>
+        <local:YieldCurvePointSlider x:Name="slider7y" IntervalString="7Y" Grid.Column="7" HorizontalAlignment="Center" PropertyChanged="sliders_PropertyChanged"/>
+        <local:YieldCurvePointSlider x:Name="slider10y" IntervalString="10Y" Grid.Column="8" HorizontalAlignment="Center" PropertyChanged="sliders_PropertyChanged"/>
+        <local:YieldCurvePointSlider x:Name="slider20y" IntervalString="20Y" Grid.Column="9" HorizontalAlignment="Center" PropertyChanged="sliders_PropertyChanged"/>
+        <local:YieldCurvePointSlider x:Name="slider30y" IntervalString="30Y" Grid.Column="10" HorizontalAlignment="Center" PropertyChanged="sliders_PropertyChanged"/>
+
+    </Grid>
+</UserControl>

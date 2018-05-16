@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="PricerGUI.InstrumentInput.BondOptionInput"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PricerGUI.InstrumentInput"
+             xmlns:pricer="clr-namespace:PricerCore;assembly=PricerCore"
+             xmlns:System="clr-namespace:System;assembly=mscorlib"
+             mc:Ignorable="d" d:DesignWidth="300">
+    <UserControl.Resources>
+        <ObjectDataProvider x:Key="couponTypes" MethodName="GetValues" ObjectType="{x:Type System:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="pricer:CouponPaymentType"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider x:Key="optionTypes" MethodName="GetValues" ObjectType="{x:Type System:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="pricer:BondOption+OptionType"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </UserControl.Resources>
+    <StackPanel>
+        <Label Content="Strike Price" FontSize="11" />
+        <TextBox Text="{Binding StrikePrice}" TextChanged="TextBox_TextChanged"/>
+        <Label Content="ExecutionTime" FontSize="11" />
+        <TextBox Text="{Binding ExecutionTime}" TextChanged="TextBox_TextChanged"/>
+        <Label Content="Option Type" FontSize="11"/>
+        <ComboBox x:Name="typecombobox" FontSize="11" SelectedItem="{Binding Type}" ItemsSource="{Binding Source={StaticResource optionTypes}}" SelectionChanged="ComboBox_SelectionChanged"/>
+        <GroupBox Header="Underlying Bond">
+            <StackPanel >
+                <Label Content="Face Value" FontSize="11" />
+                <TextBox Text="{Binding UnderlyingBond.FaceValue}" TextChanged="TextBox_TextChanged"/>
+                <Label Content="Maturity" FontSize="11" />
+                <TextBox Text="{Binding UnderlyingBond.Maturity}" TextChanged="TextBox_TextChanged"/>
+                <Label Content="Coupon Payments" FontSize="11"/>
+                <ComboBox x:Name="couponcombobox" FontSize="11" SelectedItem="{Binding UnderlyingBond.Coupon}" ItemsSource="{Binding Source={StaticResource couponTypes}}" SelectionChanged="ComboBox_SelectionChanged"/>
+                <Label Content="Yearly Coupon Rate" FontSize="11" />
+                <TextBox Text="{Binding UnderlyingBond.Rate}" TextChanged="TextBox_TextChanged"/>
+            </StackPanel>
+        </GroupBox>
+
+    </StackPanel >
+</UserControl>

@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.6
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PricerCore", "PricerCore\PricerCore.csproj", "{7029E381-D22B-4250-B539-35A49350C8C4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuandlCS", "QuandlCS\QuandlCS.csproj", "{3839AEA2-4391-4D52-9811-E3FB8937EAFA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PricerGUI", "PricerGUI\PricerGUI.csproj", "{BDA0EDA8-0F96-4E12-A3DA-139DA494C519}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConvergenceTests", "ConvergenceTests\ConvergenceTests.csproj", "{787B6816-0FB1-4E46-A263-E3ABD9FEC220}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7029E381-D22B-4250-B539-35A49350C8C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7029E381-D22B-4250-B539-35A49350C8C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7029E381-D22B-4250-B539-35A49350C8C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7029E381-D22B-4250-B539-35A49350C8C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3839AEA2-4391-4D52-9811-E3FB8937EAFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3839AEA2-4391-4D52-9811-E3FB8937EAFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3839AEA2-4391-4D52-9811-E3FB8937EAFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3839AEA2-4391-4D52-9811-E3FB8937EAFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDA0EDA8-0F96-4E12-A3DA-139DA494C519}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDA0EDA8-0F96-4E12-A3DA-139DA494C519}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDA0EDA8-0F96-4E12-A3DA-139DA494C519}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDA0EDA8-0F96-4E12-A3DA-139DA494C519}.Release|Any CPU.Build.0 = Release|Any CPU
+		{787B6816-0FB1-4E46-A263-E3ABD9FEC220}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{787B6816-0FB1-4E46-A263-E3ABD9FEC220}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{787B6816-0FB1-4E46-A263-E3ABD9FEC220}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{787B6816-0FB1-4E46-A263-E3ABD9FEC220}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

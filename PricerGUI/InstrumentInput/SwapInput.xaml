@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="PricerGUI.InstrumentInput.SwapInput"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PricerGUI.InstrumentInput"
+             xmlns:pricer="clr-namespace:PricerCore;assembly=PricerCore"
+             xmlns:System="clr-namespace:System;assembly=mscorlib"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <ObjectDataProvider x:Key="swapTypes" MethodName="GetValues" ObjectType="{x:Type System:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="pricer:Swap+SwapType"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider x:Key="couponTypes" MethodName="GetValues" ObjectType="{x:Type System:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="pricer:CouponPaymentType"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </UserControl.Resources>
+    
+    <StackPanel>
+
+        <Label Content="Face Value" FontSize="11" />
+        <TextBox Text="{Binding FaceValue}" TextChanged="TextBox_TextChanged"/>
+        
+        <Label Content="Maturity" FontSize="11" />
+        <TextBox Text="{Binding Maturity}" TextChanged="TextBox_TextChanged"/>
+
+        <Label Content="Swap Type" FontSize="11"/>
+        <ComboBox FontSize="11" SelectedItem="{Binding Type}" ItemsSource="{Binding Source={StaticResource swapTypes}}" SelectionChanged="ComboBox_SelectionChanged"/>
+
+        <Label Content="Coupon Payments" FontSize="11"/>
+        <ComboBox FontSize="11" SelectedItem="{Binding Coupon}" ItemsSource="{Binding Source={StaticResource couponTypes}}" SelectionChanged="ComboBox_SelectionChanged"/>
+        
+        <Label Content="Yearly Coupon Rate" FontSize="11" />
+        <TextBox Text="{Binding Rate}" TextChanged="TextBox_TextChanged"/>
+
+    </StackPanel >
+</UserControl>
+

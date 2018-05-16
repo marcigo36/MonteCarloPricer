@@ -1,0 +1,88 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PricerGUI"
+        xmlns:MainWindowComponents="clr-namespace:PricerGUI.MainWindowComponents" x:Class="PricerGUI.MainWindow"
+        mc:Ignorable="d"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}"
+        Title="MonteCarloPricer" Height="472.087" Width="997.935" Loaded="Window_Loaded">
+    <Window.Resources>
+        <local:IsNullToBoolConverter x:Key="IsNullToBoolConverter"/>
+        <local:IsZeroToBoolConverter x:Key="IsZeroToBoolConverter"/>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="300px"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Column="0" Content="Select an instrument to edit" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18" Panel.ZIndex="1" Background="#FFF1F1F1" >
+            <Label.Style>
+                <Style TargetType="{x:Type Label}">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding SelectedItem, ElementName=requestsListBox, Converter={StaticResource IsNullToBoolConverter}}" Value="True">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding SelectedItem, ElementName=requestsListBox, Converter={StaticResource IsNullToBoolConverter}}" Value="False">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Label.Style>
+        </Label>
+
+        <Grid Grid.Column="0" Background="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="30px"/>
+            </Grid.RowDefinitions>
+            <MainWindowComponents:PricingRequestEditor x:Name="pricingRequestEditor" Grid.Row="0" PropertyChanged="pricingRequestEditor_PropertyChanged" KeyDown="pricingRequestEditor_KeyDown" MouseDown="pricingRequestEditor_MouseDown"/>
+            <StackPanel Grid.Row="1" Orientation="Horizontal" FlowDirection="RightToLeft">
+                <Button Content="Visualize The Underlying Processs" Margin="4" Click="visualizerButton_Click"/>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="23px"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="NewButton" Grid.Column="0" Content="New" Margin="2px" Click="NewButton_Click"/>
+                <Button x:Name="DeleteButton" Grid.Column="1" Content="Delete" Margin="2px" Click="DeleteButton_Click"/>
+                <Button x:Name="PriceButton" Grid.Column="2" Content="Price" Margin="2px" Click="PriceButton_Click"/>
+
+            </Grid>
+
+            <ListBox x:Name="requestsListBox" Grid.Row="1" HorizontalContentAlignment="Stretch" SelectionChanged="requestsListBox_SelectionChanged">
+                <ListBox.ItemTemplate>
+                    <DataTemplate DataType="{x:Type  MainWindowComponents:PricingRequestWithResult}">
+                        <MainWindowComponents:PricingRequestListItem DataContext="{Binding}"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+            <Label Grid.Row="1" Content="Press 'New' to add an instrument" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18" Panel.ZIndex="1" >
+                <Label.Style>
+                    <Style TargetType="{x:Type Label}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Items.Count, ElementName=requestsListBox, Converter={StaticResource IsZeroToBoolConverter}}" Value="True">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Items.Count, ElementName=requestsListBox, Converter={StaticResource IsZeroToBoolConverter}}" Value="False">
+                                <Setter Property="Visibility" Value="Collapsed"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Label.Style>
+            </Label>
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="PricerGUI.YieldCurveInput.QuandlYieldCurveLoader"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PricerGUI.YieldCurveInput"
+             xmlns:oxy="http://oxyplot.org/wpf"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             mc:Ignorable="d" 
+             DataContext="{Binding RelativeSource={RelativeSource Self}}"
+             d:DesignHeight="300" d:DesignWidth="600">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="150"/>
+        </Grid.ColumnDefinitions>
+        <!--yield curve plot-->
+        <oxy:Plot x:Name="graph" Title="US Treasury Yield Curve" LegendPlacement="Outside">
+            <oxy:Plot.Axes>
+                <oxy:LinearAxis Position="Bottom" Minimum="0" Maximum="30" Title="Maturity" Unit="Years"/>
+                <oxy:LinearAxis Position="Left" MaximumPadding="0.1" Minimum="0" Title="Rate"/>
+            </oxy:Plot.Axes>
+            <oxy:Plot.Series>
+                <oxy:LineSeries ItemsSource="{Binding YieldAsOxyPlotCurve}"/>
+            </oxy:Plot.Series>
+        </oxy:Plot>
+
+        <!--date selector-->
+        <StackPanel Grid.Column="1">
+            <TextBlock FontSize="17">Date</TextBlock>
+            <DatePicker x:Name="datePicker" FirstDayOfWeek="Monday" SelectedDate="{x:Static sys:DateTime.Now}" DisplayDateStart="2000-01-01" DisplayDateEnd="{Binding Mode=OneWay, Source={x:Static sys:DateTime.Today}}" SelectedDateChanged="DatePicker_SelectedDateChanged"/>
+        </StackPanel>
+    </Grid>
+</UserControl>
